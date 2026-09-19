@@ -49,6 +49,7 @@ class RoleManager
                     return $next($request);
                 }
                 break ;
+
         }
 
         switch($authUserRole){
@@ -63,6 +64,7 @@ class RoleManager
 
             case 3 :
                 return redirect()->route('guest');
+
         }
 
         return redirect()->route('login');
