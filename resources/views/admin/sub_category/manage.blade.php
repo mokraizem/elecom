@@ -1,3 +1,7 @@
-<div>
-    <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
-</div>
+@extends('admin.layouts.layout')
+@section('admin_page_title')
+Manage SubCategory - Admin Panel
+@endsection
+@section('admin_layout')
+    <h3>Manage Sub Category Page</h3>
+@endsection

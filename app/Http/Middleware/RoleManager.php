@@ -44,12 +44,6 @@ class RoleManager
                 }
                 break ;
 
-            case 'guest' :
-                if($authUserRole == 3){
-                    return $next($request);
-                }
-                break ;
-
         }
 
         switch($authUserRole){
@@ -61,9 +55,6 @@ class RoleManager
 
             case 2 :
                 return redirect()->route('dashboard');
-
-            case 3 :
-                return redirect()->route('guest');
 
         }
 

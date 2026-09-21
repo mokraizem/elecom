@@ -1,3 +1,7 @@
-<div>
-    <!-- If you do not have a consistent goal in life, you can not live it in a consistent way. - Marcus Aurelius -->
-</div>
+@extends('admin.layouts.layout')
+@section('admin_page_title')
+Create SubCategory - Admin Panel
+@endsection
+@section('admin_layout')
+    <h3>Create Sub Category Page</h3>
+@endsection

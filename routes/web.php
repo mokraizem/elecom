@@ -87,13 +87,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'rolemanager:customer'])->name('dashboard');
 
-Route::get('/guest/dashboard', function(){
-    return view('guest');
-})->middleware(['auth', 'verified' ,  'rolemanager:guest'])->name('guest');
 
-Route::get('/trial', function(){
-    return view('trial');
-})->middleware(['auth', 'verified' , 'rolemanager:trail'])->name('trial');
+
+
 
 
 Route::middleware('auth')->group(function () {

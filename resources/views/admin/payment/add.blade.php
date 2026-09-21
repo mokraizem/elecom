@@ -1,3 +1,7 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-</div>
+@extends('admin.layouts.layout')
+@section('admin_page_title')
+Add Payment Method - Admin Panel
+@endsection
+@section('admin_layout')
+    <h3>Add New Payment Method Page</h3>
+@endsection

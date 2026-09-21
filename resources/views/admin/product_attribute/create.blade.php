@@ -1,3 +1,7 @@
-<div>
-    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-</div>
+@extends('admin.layouts.layout')
+@section('admin_page_title')
+Create Product Attribute - Admin Panel
+@endsection
+@section('admin_layout')
+    <h3>Create Product Attribute Page</h3>
+@endsection
