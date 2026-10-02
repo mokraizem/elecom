@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\SellerMainController;
+use App\Http\Controllers\seller\SellerProductController;
+use App\Http\Controllers\seller\SellerStoreController;
+use App\Http\Controllers\seller\StoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -78,18 +82,35 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
 });
 
 
-Route::get('/vendor/dashboard', function(){
-    return view('vendor');
-})->middleware('auth', 'verified' , 'rolemanager:vendor')->name('vendor');
+// ===========================================================================================
+Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
 
+    Route::prefix('vendor')->group(function(){
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:customer'])->name('dashboard');
+        Route::controller(SellerMainController::class)->group(function(){
 
+            Route::get('/dashboard', 'index')->name('vendor');
+        });
 
+        Route::controller(SellerMainController::class)->group(function(){
+            Route::get('/orderhistory', 'history')->name('vendor.order.history');
+        });
 
+        Route::controller(SellerProductController::class)->group(function(){
 
+            Route::get('/product/create', 'index')->name('vendor.product.create');
+            Route::get('/product/manage', 'manage')->name('vendor.product.manage');
+        });
+
+        Route::controller(SellerStoreController::class)->group(function(){
+
+            Route::get('/store/create', 'index')->name('vendor.store.create');
+            Route::get('/store/manage', 'manage')->name('vendor.store.manage');
+        });
+
+    });
+
+});
 
 
 Route::middleware('auth')->group(function () {
