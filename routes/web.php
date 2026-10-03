@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerMainController;
 use App\Http\Controllers\seller\SellerProductController;
@@ -17,12 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/admin/dashboard', function(){
-//     return view('admin.admin');
-// })->middleware(['auth' , 'verified' , 'rolemanager:admin'])->name('admin');
 
-
-
+# ADMIN ROUTES
+#===============================================================================================
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
 
     Route::prefix('admin')->group(function(){
@@ -82,7 +80,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function(){
 });
 
 
-// ===========================================================================================
+# ===========================================================================================
+# Vendor Routes
 Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
 
     Route::prefix('vendor')->group(function(){
@@ -112,6 +111,33 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function(){
 
 });
 
+
+# CUSTOMER ROUTES
+# ==============================================================================================
+
+
+Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function(){
+
+    Route::prefix('customer')->group(function(){
+
+        Route::controller(CustomerMainController::class)->group(function(){
+
+            Route::get('/dashboard', 'index')->name('customer');
+            Route::get('/order/history', 'history')->name('customer.order.history');
+            Route::get('/settings/payment', 'payment')->name('customer.payment');
+            Route::get('/affiliate', 'affiliate')->name('customer.affiliate');
+
+        });
+
+
+
+    });
+
+});
+
+
+
+#====================================================================
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
