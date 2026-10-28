@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\MasterCategoryController;
 use App\Http\Controllers\ProfileController;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/logout', [AuthenticatedSessionController::class , 'destroy']);
 
 
 # ADMIN ROUTES
