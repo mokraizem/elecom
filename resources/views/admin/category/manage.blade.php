@@ -12,7 +12,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Category ID</th>
                             <th>Category Name</th>
                             <th>Action</th>
                         </tr>
@@ -23,7 +23,7 @@
                         <tr>
                             <td> {{ $cat->id }} </td>
                             <td>{{ $cat->category_name }}</td>
-                            <td><a href="#" class="btn btn-danger">Delete</a></td>
+                            <td> <a href="{{ route('show.cat', $cat->id) }}" class="btn btn-info">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
                         </tr>
 
                         @endforeach
